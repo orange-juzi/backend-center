@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 拦截器
  */
 @Configuration
-public class SaTokenConfigure implements WebMvcConfigurer {
+public class InterceptorConfig implements WebMvcConfigurer {
     // 注册拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -18,10 +18,11 @@ public class SaTokenConfigure implements WebMvcConfigurer {
         registry.addInterceptor(new SaInterceptor(handle -> StpUtil.checkLogin()))
                 .addPathPatterns("/**")
                 .excludePathPatterns("/user/login", "/user/register")
-                .excludePathPatterns("/**/doc.*",
-                        "/**/swagger-ui.*",
-                        "/**/swagger-resources",
-                        "/**/webjars/**",
-                        "/**/v3/api-docs/**");
+                .excludePathPatterns("/v3/api-docs", // 排除Swagger生成的API文档路径
+                        "/swagger-resources/**", // 排除Swagger的资源路径
+                        "/swagger-ui/**", // 排除Swagger的UI路径
+                        "/swagger-ui.html", // 排除Swagger UI的首页路径
+                        "/webjars/**",
+                        "/**/doc-api.html/**"); // 排除Swagger的webjars路径
     }
 }

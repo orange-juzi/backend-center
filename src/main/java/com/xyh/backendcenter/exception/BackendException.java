@@ -16,7 +16,7 @@ public class BackendException extends RuntimeException {
     public BackendException(ResultCodeEnum resultCodeEnum) {
         this.resultCodeEnum = resultCodeEnum ;
         this.code = resultCodeEnum.getCode() ;
-        this.message = resultCodeEnum.getMessage();
+        this.message = resultCodeEnum.getMsg();
     }
 
     public BackendException(Integer code , String message) {
