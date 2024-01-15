@@ -40,6 +40,7 @@ public class Role implements Serializable {
      * 描述
      */
     @Schema(description = "描述")
+    @TableField("`desc`")
     private String desc;
 
     @TableField(exist = false)

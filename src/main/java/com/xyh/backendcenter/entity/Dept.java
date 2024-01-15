@@ -15,7 +15,7 @@ import lombok.Data;
  */
 @TableName(value ="tb_dept")
 @Data
-//@Schema(description = "部门实体类")
+@Schema(description = "部门实体类")
 public class Dept implements Serializable {
     /**
      * 主键
@@ -46,6 +46,7 @@ public class Dept implements Serializable {
      * 备注
      */
     @Schema(description = "备注")
+    @TableField("`desc`")
     private String desc;
 
     @TableField(exist = false)

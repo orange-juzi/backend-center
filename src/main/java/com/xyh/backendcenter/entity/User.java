@@ -101,12 +101,14 @@ public class User implements Serializable {
      * 创建时间
      */
     @Schema(description = "创建时间")
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     /**
      * 修改时间
      */
     @Schema(description = "修改时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
     /**
